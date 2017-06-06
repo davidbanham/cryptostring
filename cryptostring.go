@@ -35,3 +35,14 @@ func String() (string, error) {
 	b, err := generateRandomBytes(18)
 	return base64.URLEncoding.EncodeToString(b), err
 }
+
+// String returns a URL-safe, base64 encoded
+// securely generated random string with 18 bytes of entropy and 24 characters in length
+// If there's something wrong with the entropy pool, PANIC!
+func StringOrBust() string {
+	b, err := generateRandomBytes(18)
+	if err != nil {
+		panic(err)
+	}
+	return base64.URLEncoding.EncodeToString(b)
+}

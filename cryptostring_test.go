@@ -32,6 +32,13 @@ func TestString(t *testing.T) {
 	}
 }
 
+func TestStringOrBust(t *testing.T) {
+	str := StringOrBust()
+	if len(str) != 24 {
+		t.Error("Length does not match")
+	}
+}
+
 const n = 18
 
 func BenchmarkCryptoString(b *testing.B) {
